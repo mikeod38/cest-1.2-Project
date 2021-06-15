@@ -1,4 +1,4 @@
-genotype,approx time since removal from food (min),# of bends backwards,omega turn?,tail touch?
+genotype,Time_off_food,NumBends,Omega,Tail-touch
 N2,5,5,Y,N
 N2,5,6,Y,Y
 N2,5,2,Y,Y
