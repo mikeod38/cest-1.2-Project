@@ -10,29 +10,56 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(patchwork)
 library(ggbeeswarm)
+library(kableExtra)
 ```
 
 ```{r data load}
-AntTouch <- read_csv('cest-1.2 anterior touch practice.csv')
+AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv')
 ```
 
 ```{r}
 bodybendPlot <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  ggplot(aes(x = genotype, y = NumBends)) +
+  ggplot(aes(x = genotype, y = bends, colour = observer)) +
   geom_boxplot() +
   stat_summary(geom = "errorbar", fun.data = "mean_se", width = 0.25, color = "red") +
   ggbeeswarm::geom_quasirandom(width = .25) +
-  facet_grid(.~Time_off_food)
+  facet_grid(.~time_off_food)
 
 #Are num bends dependent on time on plate? 
 (bends_by_order <- AntTouch %>%
-  group_by(genotype, Time_off_food) %>%
+  group_by(genotype, time_off_food, observer) %>%
   mutate(index = row_number()) %>%
-  ggplot(aes(x = index, y = NumBends)) +
+  ggplot(aes(x = index, y = bends)) +
     geom_point()) +
-  facet_grid(Time_off_food ~ genotype, scales = "free_y") +
+  facet_grid(time_off_food ~ genotype, scales = "free_y") +
   geom_smooth(method = "lm")
   
-
+bodybendPlot +
+  facet_grid(observer ~ time_off_food)
 ```
+```{r body bends by time}
+AntTouch %>%
+  filter(time_off_food != 30, is.na(note)) %>%
+  ggplot(aes(x= genotype, y = bends)) +
+  geom_boxplot() +
+  geom_quasirandom(aes(colour = observer), width = 0.2,alpha = 0.4)
+  
+# get group means:
+
+AntTouch %>%
+  filter(time_off_food != 30, is.na(note)) %>%
+  group_by(observer, genotype) %>%
+  summarize(mean_bends = mean(bends)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+# plot the distribution of body bends:
+
+AntTouch %>%
+  filter(time_off_food != 30, is.na(note)) %>%
+  ggplot(aes(x = bends)) +
+  geom_freqpoly(aes(color = genotype), stat = "bin", bins = 6)
+  #geom_density(aes(fill = genotype), alpha = 0.2)
+```
+
