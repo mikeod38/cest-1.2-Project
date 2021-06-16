@@ -1,0 +1,118 @@
+observer,genotype,time_off_food,bends,omega,tail_touch,note
+JB,N2,5,5,Y,N,
+JB,N2,5,6,Y,Y,
+JB,N2,5,2,Y,Y,
+JB,N2,5,6,Y,Y,
+JB,N2,5,3,Y,N,
+JB,N2,5,4,Y,Y,
+JB,N2,5,4,Y,Y,
+JB,N2,5,4,Y,Y,
+JB,N2,5,4,Y,Y,
+JB,cest-1.2,5,2,Y,N,
+JB,cest-1.2,5,4,Y,N,
+JB,cest-1.2,5,3,Y,N,
+JB,cest-1.2,5,4,Y,Y,
+JB,cest-1.2,5,4,Y,Y,
+JB,cest-1.2,5,6,Y,Y,
+JB,cest-1.2,5,3,Y,Y,
+JB,cest-1.2,5,5,Y,Y,
+JB,cest-1.2,5,4,Y,Y,
+JB,cest-1.2,5,3,Y,N,
+JB,N2,30,6,Y,Y,
+JB,N2,30,3,Y,Y,
+JB,N2,30,10,Y,Y,
+JB,N2,30,5,Y,Y,
+JB,N2,30,6,Y,Y,
+JB,N2,30,5,Y,Y,
+JB,N2,30,5,Y,N,
+JB,N2,30,6,Y,N,
+JB,N2,30,5,Y,N,
+JB,cest-1.2,30,5,Y,Y,
+JB,cest-1.2,30,5,Y,Y,
+JB,cest-1.2,30,2,Y,Y,
+JB,cest-1.2,30,4,Y,Y,
+JB,cest-1.2,30,3,Y,Y,
+JB,cest-1.2,30,5,Y,N,
+JB,cest-1.2,30,3,Y,N,
+JB,cest-1.2,30,7,Y,Y,
+JB,cest-1.2,30,8,Y,N,
+JB,cest-1.2,30,7,Y,Y,
+JB,cest-1.2,10,4,,Y,animals young
+JB,cest-1.2,10,5,,N,animals young
+JB,cest-1.2,10,2,,Y,animals young
+JB,cest-1.2,10,4,,N,animals young
+JB,cest-1.2,10,3,,Y,animals young
+JB,cest-1.2,10,5,,Y,animals young
+JB,cest-1.2,10,3,,Y,animals young
+JB,cest-1.2,10,3,,Y,animals young
+JB,cest-1.2,10,4,,Y,animals young
+JB,cest-1.2,10,2,,Y,animals young
+JB,cest-1.2,10,5,,Y,animals young
+JB,cest-1.2,10,3,,Y,animals young
+JB,cest-1.2,10,6,,Y,animals young
+JB,cest-1.2,10,3,,Y,animals young
+JB,cest-1.2,10,5,,Y,animals young
+JB,cest-1.2,10,3,,Y,animals young
+JB,cest-1.2,10,5,,Y,animals young
+JB,cest-1.2,10,4,,Y,animals young
+JB,cest-1.2,10,4,,Y,animals young
+JB,N2,10,4,,Y,animals young
+JB,N2,10,4,,N,animals young
+JB,N2,10,3,,N,animals young
+JB,N2,10,3,,N,animals young
+JB,N2,10,4,,Y,animals young
+JB,N2,10,5,,Y,animals young
+JB,N2,10,3,,Y,animals young
+JB,N2,10,2,,Y,animals young
+JB,N2,10,4,,Y,animals young
+JB,N2,10,2,,N,animals young
+JB,N2,10,4,,N,animals young
+JB,N2,10,5,,Y,animals young
+JB,N2,10,2,,Y,animals young
+JB,N2,10,5,,Y,animals young
+JB,N2,10,3,,Y,animals young
+JB,N2,10,5,,N,animals young
+JB,N2,10,4,,N,animals young
+JB,N2,10,6,,Y,animals young
+JB,N2,10,5,,Y,animals young
+MOD,cest-1.2,10,3,,Y,
+MOD,cest-1.2,10,3,,Y,
+MOD,cest-1.2,10,3,,N,
+MOD,cest-1.2,10,3,,Y,
+MOD,cest-1.2,10,4,,Y,
+MOD,cest-1.2,10,3,,N,
+MOD,cest-1.2,10,5,,N,
+MOD,cest-1.2,10,4,,Y,
+MOD,cest-1.2,10,4,,Y,
+MOD,cest-1.2,10,4,,N,
+MOD,cest-1.2,10,6,,Y,
+MOD,cest-1.2,10,4,,Y,
+MOD,cest-1.2,10,4,,Y,
+MOD,cest-1.2,10,7,,Y,
+MOD,cest-1.2,10,5,,N,
+MOD,cest-1.2,10,4,,Y,
+MOD,cest-1.2,10,3,,Y,
+MOD,cest-1.2,10,3,,N,
+MOD,cest-1.2,10,2,,N,
+MOD,cest-1.2,10,6,,Y,
+MOD,N2,10,4,,Y,
+MOD,N2,10,5,,N,
+MOD,N2,10,5,,Y,
+MOD,N2,10,5,,Y,
+MOD,N2,10,3,,B,
+MOD,N2,10,4,,Y,
+MOD,N2,10,6,,Y,
+MOD,N2,10,5,,Y,
+MOD,N2,10,5,,N,
+MOD,N2,10,6,,Y,
+MOD,N2,10,4,,N,
+MOD,N2,10,3,,N,
+MOD,N2,10,6,,Y,
+MOD,N2,10,3,,Y,
+MOD,N2,10,6,,Y,
+MOD,N2,10,4,,Y,
+MOD,N2,10,2,,Y,
+MOD,N2,10,3,,N,
+MOD,N2,10,7,,Y,
+MOD,N2,10,4,,Y,
+MOD,N2,10,4,,Y,
