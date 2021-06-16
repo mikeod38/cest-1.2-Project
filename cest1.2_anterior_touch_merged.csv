@@ -1,158 +1,158 @@
-observer,genotype,time_off_food,bends,omega,tail_touch,note
-JB,N2,5,5,Y,N,
-JB,N2,5,6,Y,Y,
-JB,N2,5,2,Y,Y,
-JB,N2,5,6,Y,Y,
-JB,N2,5,3,Y,N,
-JB,N2,5,4,Y,Y,
-JB,N2,5,4,Y,Y,
-JB,N2,5,4,Y,Y,
-JB,N2,5,4,Y,Y,
-JB,cest-1.2,5,2,Y,N,
-JB,cest-1.2,5,4,Y,N,
-JB,cest-1.2,5,3,Y,N,
-JB,cest-1.2,5,4,Y,Y,
-JB,cest-1.2,5,4,Y,Y,
-JB,cest-1.2,5,6,Y,Y,
-JB,cest-1.2,5,3,Y,Y,
-JB,cest-1.2,5,5,Y,Y,
-JB,cest-1.2,5,4,Y,Y,
-JB,cest-1.2,5,3,Y,N,
-JB,N2,30,6,Y,Y,
-JB,N2,30,3,Y,Y,
-JB,N2,30,10,Y,Y,
-JB,N2,30,5,Y,Y,
-JB,N2,30,6,Y,Y,
-JB,N2,30,5,Y,Y,
-JB,N2,30,5,Y,N,
-JB,N2,30,6,Y,N,
-JB,N2,30,5,Y,N,
-JB,cest-1.2,30,5,Y,Y,
-JB,cest-1.2,30,5,Y,Y,
-JB,cest-1.2,30,2,Y,Y,
-JB,cest-1.2,30,4,Y,Y,
-JB,cest-1.2,30,3,Y,Y,
-JB,cest-1.2,30,5,Y,N,
-JB,cest-1.2,30,3,Y,N,
-JB,cest-1.2,30,7,Y,Y,
-JB,cest-1.2,30,8,Y,N,
-JB,cest-1.2,30,7,Y,Y,
-JB,cest-1.2,10,4,,Y,animals young
-JB,cest-1.2,10,5,,N,animals young
-JB,cest-1.2,10,2,,Y,animals young
-JB,cest-1.2,10,4,,N,animals young
-JB,cest-1.2,10,3,,Y,animals young
-JB,cest-1.2,10,5,,Y,animals young
-JB,cest-1.2,10,3,,Y,animals young
-JB,cest-1.2,10,3,,Y,animals young
-JB,cest-1.2,10,4,,Y,animals young
-JB,cest-1.2,10,2,,Y,animals young
-JB,cest-1.2,10,5,,Y,animals young
-JB,cest-1.2,10,3,,Y,animals young
-JB,cest-1.2,10,6,,Y,animals young
-JB,cest-1.2,10,3,,Y,animals young
-JB,cest-1.2,10,5,,Y,animals young
-JB,cest-1.2,10,3,,Y,animals young
-JB,cest-1.2,10,5,,Y,animals young
-JB,cest-1.2,10,4,,Y,animals young
-JB,cest-1.2,10,4,,Y,animals young
-JB,N2,10,4,,Y,animals young
-JB,N2,10,4,,N,animals young
-JB,N2,10,3,,N,animals young
-JB,N2,10,3,,N,animals young
-JB,N2,10,4,,Y,animals young
-JB,N2,10,5,,Y,animals young
-JB,N2,10,3,,Y,animals young
-JB,N2,10,2,,Y,animals young
-JB,N2,10,4,,Y,animals young
-JB,N2,10,2,,N,animals young
-JB,N2,10,4,,N,animals young
-JB,N2,10,5,,Y,animals young
-JB,N2,10,2,,Y,animals young
-JB,N2,10,5,,Y,animals young
-JB,N2,10,3,,Y,animals young
-JB,N2,10,5,,N,animals young
-JB,N2,10,4,,N,animals young
-JB,N2,10,6,,Y,animals young
-JB,N2,10,5,,Y,animals young
-MOD,cest-1.2,10,3,,Y,
-MOD,cest-1.2,10,3,,Y,
-MOD,cest-1.2,10,3,,N,
-MOD,cest-1.2,10,3,,Y,
-MOD,cest-1.2,10,4,,Y,
-MOD,cest-1.2,10,3,,N,
-MOD,cest-1.2,10,5,,N,
-MOD,cest-1.2,10,4,,Y,
-MOD,cest-1.2,10,4,,Y,
-MOD,cest-1.2,10,4,,N,
-MOD,cest-1.2,10,6,,Y,
-MOD,cest-1.2,10,4,,Y,
-MOD,cest-1.2,10,4,,Y,
-MOD,cest-1.2,10,7,,Y,
-MOD,cest-1.2,10,5,,N,
-MOD,cest-1.2,10,4,,Y,
-MOD,cest-1.2,10,3,,Y,
-MOD,cest-1.2,10,3,,N,
-MOD,cest-1.2,10,2,,N,
-MOD,cest-1.2,10,6,,Y,
-MOD,N2,10,4,,Y,
-MOD,N2,10,5,,N,
-MOD,N2,10,5,,Y,
-MOD,N2,10,5,,Y,
-MOD,N2,10,3,,B,
-MOD,N2,10,4,,Y,
-MOD,N2,10,6,,Y,
-MOD,N2,10,5,,Y,
-MOD,N2,10,5,,N,
-MOD,N2,10,6,,Y,
-MOD,N2,10,4,,N,
-MOD,N2,10,3,,N,
-MOD,N2,10,6,,Y,
-MOD,N2,10,3,,Y,
-MOD,N2,10,6,,Y,
-MOD,N2,10,4,,Y,
-MOD,N2,10,2,,Y,
-MOD,N2,10,3,,N,
-MOD,N2,10,7,,Y,
-MOD,N2,10,4,,Y,
-MOD,N2,10,4,,Y,
-JB,N2,5,5,,N,
-JB,N2,5,7,,Y,
-JB,N2,5,2,,Y,
-JB,N2,5,5,,Y,
-JB,N2,5,4,,Y,
-JB,N2,5,8,,Y,
-JB,N2,5,2,,Y,
-JB,N2,5,3,,Y,
-JB,N2,5,3,,N,
-JB,N2,5,6,,N,
-JB,N2,5,4,,Y,
-JB,N2,5,4,,Y,
-JB,N2,5,3,,N,
-JB,N2,5,8,,Y,
-JB,N2,5,5,,Y,
-JB,N2,5,4,,Y,
-JB,N2,5,4,,Y,
-JB,N2,5,4,,Y,
-JB,N2,5,3,,Y,
-JB,N2,5,5,,Y,
-JB,cest-1.2,5,3,,N,
-JB,cest-1.2,5,3,,N,
-JB,cest-1.2,5,3,,Y,
-JB,cest-1.2,5,4,,N,
-JB,cest-1.2,5,11,,Y,
-JB,cest-1.2,5,2,,N,
-JB,cest-1.2,5,2,,Y,
-JB,cest-1.2,5,3,,Y,
-JB,cest-1.2,5,3,,Y,
-JB,cest-1.2,5,4,,Y,
-JB,cest-1.2,5,2,,Y,
-JB,cest-1.2,5,3,,Y,
-JB,cest-1.2,5,3,,Y,
-JB,cest-1.2,5,4,,Y,
-JB,cest-1.2,5,4,,N,
-JB,cest-1.2,5,6,,N,
-JB,cest-1.2,5,7,,N,
-JB,cest-1.2,5,4,,Y,
-JB,cest-1.2,5,3,,Y,
-JB,cest-1.2,5,5,,Y,
+observer,genotype,time_off_food,bends,omega,tail_touch,note,date
+JB,N2,5,5,Y,N,,6/2/2021
+JB,N2,5,6,Y,Y,,6/2/2021
+JB,N2,5,2,Y,Y,,6/2/2021
+JB,N2,5,6,Y,Y,,6/2/2021
+JB,N2,5,3,Y,N,,6/2/2021
+JB,N2,5,4,Y,Y,,6/2/2021
+JB,N2,5,4,Y,Y,,6/2/2021
+JB,N2,5,4,Y,Y,,6/2/2021
+JB,N2,5,4,Y,Y,,6/2/2021
+JB,cest-1.2,5,2,Y,N,,6/2/2021
+JB,cest-1.2,5,4,Y,N,,6/2/2021
+JB,cest-1.2,5,3,Y,N,,6/2/2021
+JB,cest-1.2,5,4,Y,Y,,6/2/2021
+JB,cest-1.2,5,4,Y,Y,,6/2/2021
+JB,cest-1.2,5,6,Y,Y,,6/2/2021
+JB,cest-1.2,5,3,Y,Y,,6/2/2021
+JB,cest-1.2,5,5,Y,Y,,6/2/2021
+JB,cest-1.2,5,4,Y,Y,,6/2/2021
+JB,cest-1.2,5,3,Y,N,,6/2/2021
+JB,N2,30,6,Y,Y,,6/2/2021
+JB,N2,30,3,Y,Y,,6/2/2021
+JB,N2,30,10,Y,Y,,6/2/2021
+JB,N2,30,5,Y,Y,,6/2/2021
+JB,N2,30,6,Y,Y,,6/2/2021
+JB,N2,30,5,Y,Y,,6/2/2021
+JB,N2,30,5,Y,N,,6/2/2021
+JB,N2,30,6,Y,N,,6/2/2021
+JB,N2,30,5,Y,N,,6/2/2021
+JB,cest-1.2,30,5,Y,Y,,6/2/2021
+JB,cest-1.2,30,5,Y,Y,,6/2/2021
+JB,cest-1.2,30,2,Y,Y,,6/2/2021
+JB,cest-1.2,30,4,Y,Y,,6/2/2021
+JB,cest-1.2,30,3,Y,Y,,6/2/2021
+JB,cest-1.2,30,5,Y,N,,6/2/2021
+JB,cest-1.2,30,3,Y,N,,6/2/2021
+JB,cest-1.2,30,7,Y,Y,,6/2/2021
+JB,cest-1.2,30,8,Y,N,,6/2/2021
+JB,cest-1.2,30,7,Y,Y,,6/2/2021
+JB,cest-1.2,10,4,,Y,animals young,6/15/2021
+JB,cest-1.2,10,5,,N,animals young,6/15/2021
+JB,cest-1.2,10,2,,Y,animals young,6/15/2021
+JB,cest-1.2,10,4,,N,animals young,6/15/2021
+JB,cest-1.2,10,3,,Y,animals young,6/15/2021
+JB,cest-1.2,10,5,,Y,animals young,6/15/2021
+JB,cest-1.2,10,3,,Y,animals young,6/15/2021
+JB,cest-1.2,10,3,,Y,animals young,6/15/2021
+JB,cest-1.2,10,4,,Y,animals young,6/15/2021
+JB,cest-1.2,10,2,,Y,animals young,6/15/2021
+JB,cest-1.2,10,5,,Y,animals young,6/15/2021
+JB,cest-1.2,10,3,,Y,animals young,6/15/2021
+JB,cest-1.2,10,6,,Y,animals young,6/15/2021
+JB,cest-1.2,10,3,,Y,animals young,6/15/2021
+JB,cest-1.2,10,5,,Y,animals young,6/15/2021
+JB,cest-1.2,10,3,,Y,animals young,6/15/2021
+JB,cest-1.2,10,5,,Y,animals young,6/15/2021
+JB,cest-1.2,10,4,,Y,animals young,6/15/2021
+JB,cest-1.2,10,4,,Y,animals young,6/15/2021
+JB,N2,10,4,,Y,animals young,6/15/2021
+JB,N2,10,4,,N,animals young,6/15/2021
+JB,N2,10,3,,N,animals young,6/15/2021
+JB,N2,10,3,,N,animals young,6/15/2021
+JB,N2,10,4,,Y,animals young,6/15/2021
+JB,N2,10,5,,Y,animals young,6/15/2021
+JB,N2,10,3,,Y,animals young,6/15/2021
+JB,N2,10,2,,Y,animals young,6/15/2021
+JB,N2,10,4,,Y,animals young,6/15/2021
+JB,N2,10,2,,N,animals young,6/15/2021
+JB,N2,10,4,,N,animals young,6/15/2021
+JB,N2,10,5,,Y,animals young,6/15/2021
+JB,N2,10,2,,Y,animals young,6/15/2021
+JB,N2,10,5,,Y,animals young,6/15/2021
+JB,N2,10,3,,Y,animals young,6/15/2021
+JB,N2,10,5,,N,animals young,6/15/2021
+JB,N2,10,4,,N,animals young,6/15/2021
+JB,N2,10,6,,Y,animals young,6/15/2021
+JB,N2,10,5,,Y,animals young,6/15/2021
+MOD,cest-1.2,10,3,,Y,,6/15/2021
+MOD,cest-1.2,10,3,,Y,,6/15/2021
+MOD,cest-1.2,10,3,,N,,6/15/2021
+MOD,cest-1.2,10,3,,Y,,6/15/2021
+MOD,cest-1.2,10,4,,Y,,6/15/2021
+MOD,cest-1.2,10,3,,N,,6/15/2021
+MOD,cest-1.2,10,5,,N,,6/15/2021
+MOD,cest-1.2,10,4,,Y,,6/15/2021
+MOD,cest-1.2,10,4,,Y,,6/15/2021
+MOD,cest-1.2,10,4,,N,,6/15/2021
+MOD,cest-1.2,10,6,,Y,,6/15/2021
+MOD,cest-1.2,10,4,,Y,,6/15/2021
+MOD,cest-1.2,10,4,,Y,,6/15/2021
+MOD,cest-1.2,10,7,,Y,,6/15/2021
+MOD,cest-1.2,10,5,,N,,6/15/2021
+MOD,cest-1.2,10,4,,Y,,6/15/2021
+MOD,cest-1.2,10,3,,Y,,6/15/2021
+MOD,cest-1.2,10,3,,N,,6/15/2021
+MOD,cest-1.2,10,2,,N,,6/15/2021
+MOD,cest-1.2,10,6,,Y,,6/15/2021
+MOD,N2,10,4,,Y,,6/15/2021
+MOD,N2,10,5,,N,,6/15/2021
+MOD,N2,10,5,,Y,,6/15/2021
+MOD,N2,10,5,,Y,,6/15/2021
+MOD,N2,10,3,,B,,6/15/2021
+MOD,N2,10,4,,Y,,6/15/2021
+MOD,N2,10,6,,Y,,6/15/2021
+MOD,N2,10,5,,Y,,6/15/2021
+MOD,N2,10,5,,N,,6/15/2021
+MOD,N2,10,6,,Y,,6/15/2021
+MOD,N2,10,4,,N,,6/15/2021
+MOD,N2,10,3,,N,,6/15/2021
+MOD,N2,10,6,,Y,,6/15/2021
+MOD,N2,10,3,,Y,,6/15/2021
+MOD,N2,10,6,,Y,,6/15/2021
+MOD,N2,10,4,,Y,,6/15/2021
+MOD,N2,10,2,,Y,,6/15/2021
+MOD,N2,10,3,,N,,6/15/2021
+MOD,N2,10,7,,Y,,6/15/2021
+MOD,N2,10,4,,Y,,6/15/2021
+MOD,N2,10,4,,Y,,6/15/2021
+JB,N2,5,5,,N,,6/16/2021
+JB,N2,5,7,,Y,,6/16/2021
+JB,N2,5,2,,Y,,6/16/2021
+JB,N2,5,5,,Y,,6/16/2021
+JB,N2,5,4,,Y,,6/16/2021
+JB,N2,5,8,,Y,,6/16/2021
+JB,N2,5,2,,Y,,6/16/2021
+JB,N2,5,3,,Y,,6/16/2021
+JB,N2,5,3,,N,,6/16/2021
+JB,N2,5,6,,N,,6/16/2021
+JB,N2,5,4,,Y,,6/16/2021
+JB,N2,5,4,,Y,,6/16/2021
+JB,N2,5,3,,N,,6/16/2021
+JB,N2,5,8,,Y,,6/16/2021
+JB,N2,5,5,,Y,,6/16/2021
+JB,N2,5,4,,Y,,6/16/2021
+JB,N2,5,4,,Y,,6/16/2021
+JB,N2,5,4,,Y,,6/16/2021
+JB,N2,5,3,,Y,,6/16/2021
+JB,N2,5,5,,Y,,6/16/2021
+JB,cest-1.2,5,3,,N,,6/16/2021
+JB,cest-1.2,5,3,,N,,6/16/2021
+JB,cest-1.2,5,3,,Y,,6/16/2021
+JB,cest-1.2,5,4,,N,,6/16/2021
+JB,cest-1.2,5,11,,Y,,6/16/2021
+JB,cest-1.2,5,2,,N,,6/16/2021
+JB,cest-1.2,5,2,,Y,,6/16/2021
+JB,cest-1.2,5,3,,Y,,6/16/2021
+JB,cest-1.2,5,3,,Y,,6/16/2021
+JB,cest-1.2,5,4,,Y,,6/16/2021
+JB,cest-1.2,5,2,,Y,,6/16/2021
+JB,cest-1.2,5,3,,Y,,6/16/2021
+JB,cest-1.2,5,3,,Y,,6/16/2021
+JB,cest-1.2,5,4,,Y,,6/16/2021
+JB,cest-1.2,5,4,,N,,6/16/2021
+JB,cest-1.2,5,6,,N,,6/16/2021
+JB,cest-1.2,5,7,,N,,6/16/2021
+JB,cest-1.2,5,4,,Y,,6/16/2021
+JB,cest-1.2,5,3,,Y,,6/16/2021
+JB,cest-1.2,5,5,,Y,,6/16/2021
