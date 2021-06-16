@@ -56,11 +56,24 @@ AntTouch %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 
 # plot the distribution of body bends:
+```
 
+
+```{r body bends by time}
 AntTouch %>%
   filter(time_off_food != 30, is.na(note)) %>%
   ggplot(aes(x = bends)) +
   geom_freqpoly(aes(color = genotype), stat = "bin", bins = 6)
   #geom_density(aes(fill = genotype), alpha = 0.2)
+```
+```{r tail touch}
+AntTouch$tail_touch_logical <- AntTouch$tail_touch == "Y"
+tailtouchPlot <- AntTouch %>%
+  #filter(NumBends < 10) %>%
+  filter(is.na(note)) %>%
+  ggplot(aes(x = genotype, y = tail_touch , colour = date)) +
+  stat_summary(fun.y = sum, geom = "bar") +
+  facet_grid(date ~time_off_food)
+tailtouchPlot
 ```
 
