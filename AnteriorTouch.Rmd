@@ -92,18 +92,10 @@ tailtouchPlot <- AntTouch %>%
   facet_grid(date ~time_off_food)
 tailtouchPlot
 
-# there's also a typo in the dataset, I assume the "B" was 
-# supposed to be "N"
-
 (tailtouchPlot2 <- 
   AntTouch %>%
     ungroup() %>%
   filter(is.na(note)) %>%
-  # next line is to fix the typo
-  mutate(tail_touch = case_when( 
-    tail_touch == "Y" ~ "Y",
-    TRUE ~ "N"
-  )) %>%
   ggplot(aes(x = genotype, fill = tail_touch)) +
     # if you don't choose position = "fill", it will give you counts, not proportion
     geom_bar(position = "fill") +
@@ -167,8 +159,5 @@ bayes_mod <- AntTouch %>%
   family = poisson,
   adapt_delta = 0.99
 )
-
-
-
 ```
 
