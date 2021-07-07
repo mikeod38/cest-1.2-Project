@@ -177,13 +177,17 @@ bayes_mod <- AntTouch %>%
                position = position_dodge(width = 1.6)) +
   scale_color_brewer(palette = "Accent") +
   scale_fill_brewer(palette = "Accent") +
-   labs(title = "Body bends in anterior touch response",
- y = "number of body bends per reversal"))
+   labs(title = "Body bends in anterior       
+touch response",
+ y = "number of body bends per reversal", x = "Plate additive"))
 
 (TAtailtouchPlot <- 
   AntTouch %>%
     ungroup() %>%
-  filter(is.na(note),  food == "OP50") %>%
+    mutate(additive = case_when(
+      is.na(additive) ~ 'none',
+      TRUE ~ additive)) %>%
+  filter(is.na(note),  food == "OP50", additive != "H2O") %>%
   ggplot(aes(x = genotype, fill = tail_touch)) +
     # if you don't choose position = "fill", it will give you counts, not proportion
     geom_bar(position = "fill") +
@@ -212,20 +216,26 @@ bayes_mod <- AntTouch %>%
   scale_color_brewer(palette = "Accent") +
   scale_fill_brewer(palette = "Accent") +
    labs(title = "Body bends in anterior touch response",
- y = "number of body bends per reversal"))
+ y = "number of body bends per reversal")) +
+  facet_grid(.~ date) 
 
 (tnaAtailtouchPlot <- 
   AntTouch %>%
     ungroup() %>%
-  filter(is.na(note),  food != "OP50") %>%
+  filter(is.na(note), food != "OP50") %>%
   ggplot(aes(x = genotype, fill = tail_touch)) +
     # if you don't choose position = "fill", it will give you counts, not proportion
     geom_bar(position = "fill") +
   labs(title = "Tail touch probability in cest-1.2",
        y = "proportion of tail touch events") +
-  facet_grid(.~food) +
+  facet_grid(date ~food) +
     scale_fill_brewer(palette = "Pastel2", direction = -1))
 
 (tnaAbodybendPlot | tnaAtailtouchPlot)
+
+```
+```{r combined plot}
+
+(TAbodybendPlot | TAtailtouchPlot)/ (tnaAbodybendPlot  | tnaAtailtouchPlot)
 ```
 
