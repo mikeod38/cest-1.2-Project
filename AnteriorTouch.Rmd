@@ -233,6 +233,11 @@ touch response",
 
 (tnaAbodybendPlot | tnaAtailtouchPlot)
 
+(distribution <- ggplot(AntTouch, aes(x=bends)) +
+    geom_histogram(binwidth=.5, colour="black", fill="white")+
+    facet_grid(genotype ~ food))
+  
+
 ```
 ```{r combined plot}
 
