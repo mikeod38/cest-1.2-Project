@@ -95,7 +95,7 @@ tailtouchPlot
 (tailtouchPlot2 <- 
   AntTouch %>%
     ungroup() %>%
-  filter(is.na(note), is.na(additive),  food == "OP50") %>%
+  filter(is.na(note), is.na(additive),  food == "OP50", genotype != "daf-22") %>%
   ggplot(aes(x = genotype, fill = tail_touch)) +
     # if you don't choose position = "fill", it will give you counts, not proportion
     geom_bar(position = "fill") +
