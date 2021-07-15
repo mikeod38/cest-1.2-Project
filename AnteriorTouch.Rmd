@@ -25,8 +25,8 @@ AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv') %>%
 
 ```{r}
 (bodybendPlot <- AntTouch %>%
-  #filter(NumBends < 10) %>%
-  filter(is.na(note), time_off_food != 30) %>%
+  filter(is.na(note), time_off_food != 30, is.na(additive), genotype != "daf-22",
+         food == "OP50") %>%
   ggplot(aes(x = date, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
@@ -41,19 +41,19 @@ AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv') %>%
   scale_color_brewer(palette = "Accent") +
   scale_fill_brewer(palette = "Accent") +
    labs(title = "Body bends in anterior touch response",
- y = "number of body bends per reversal"))
+ y = "number of body bends per reversal") +
+   stat_summary(aes(shape = genotype), fun = mean, geom = "point",
+                color = "red", size = 2))
   
-  #stat_summary(geom = "point", fun = "mean", position = "dodge") +
-
 
 #Are num bends dependent on time on plate? 
-(bends_by_order <- AntTouch %>%
-  group_by(genotype, time_off_food, observer) %>%
-  mutate(index = row_number()) %>%
-  ggplot(aes(x = index, y = bends)) +
-    geom_point()) +
-  facet_grid(time_off_food ~ genotype, scales = "free_y") +
-  geom_smooth(method = "lm")
+#(bends_by_order <- AntTouch %>%
+ # group_by(genotype, time_off_food, observer) %>%
+#  mutate(index = row_number()) %>%
+ # ggplot(aes(x = index, y = bends)) +
+#    geom_point()) +
+#  facet_grid(time_off_food ~ genotype, scales = "free_y") +
+#  geom_smooth(method = "lm")
 
 ```
 
@@ -63,7 +63,7 @@ AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv') %>%
 # get group means:
 
 AntTouch %>%
-  filter(time_off_food != 30, is.na(note)) %>%
+  filter(time_off_food != 30, is.na(note), is.na(additive), food == "OP50") %>%
   group_by(genotype, observer) %>%
   summarize(mean_bends = mean(bends)) %>%
   kable() %>%
@@ -75,7 +75,7 @@ AntTouch %>%
 ```{r body bends by time 3 days}
 # plot the distribution of body bends:
 AntTouch %>%
-  filter(time_off_food != 30, is.na(note)) %>%
+  filter(time_off_food != 30, is.na(note), is.na(additive), food == "OP50") %>%
   ggplot(aes(x = bends)) +
   geom_freqpoly(aes(color = genotype, y = stat(count) / sum(count)), stat = "bin", bins = 6)
 
@@ -95,7 +95,7 @@ AntTouch$tail_touch_logical <- AntTouch$tail_touch == "Y"
 # a better way below
 tailtouchPlot <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  filter(is.na(note)) %>%
+  filter(is.na(note), is.na(additive),  food == "OP50") %>%
   ggplot(aes(x = genotype, y = tail_touch , colour = date)) +
   stat_summary(fun.y = sum, geom = "bar") +
   facet_grid(date ~time_off_food)
@@ -104,7 +104,7 @@ tailtouchPlot
 (tailtouchPlot2 <- 
   AntTouch %>%
     ungroup() %>%
-  filter(is.na(note)) %>%
+  filter(is.na(note), is.na(additive),  food == "OP50", genotype != "daf-22") %>%
   ggplot(aes(x = genotype, fill = tail_touch)) +
     # if you don't choose position = "fill", it will give you counts, not proportion
     geom_bar(position = "fill") +
@@ -118,7 +118,7 @@ tailtouchPlot
 ```{r plot both, fig.height=8, fig.width = 10}
 bodybendPlot2 <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  filter(is.na(note), time_off_food != 30) %>%
+  filter(is.na(note), time_off_food != 30, is.na(additive), food == "OP50") %>%
   ggplot(aes(x = 1, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
@@ -141,7 +141,7 @@ bodybendPlot2 <- AntTouch %>%
 tailtouchPlot3 <- 
   AntTouch %>%
     ungroup() %>%
-  filter(is.na(note)) %>%
+  filter(is.na(note), is.na(additive),  food == "OP50") %>%
   # next line is to fix the typo
   mutate(tail_touch = case_when( 
     tail_touch == "Y" ~ "Y",
@@ -192,5 +192,90 @@ bayes_linmod <- AntTouch %>%
   adapt_delta = 0.99
 )
 
+```
+```{r TA experiment}
+(TAbodybendPlot <- AntTouch %>%
+  #filter(NumBends < 10) %>%
+  filter(is.na(note), time_off_food != 30, food == "OP50", genotype != "daf-22",
+         !is.na(additive)) %>%
+  ggplot(aes(x = additive, fill = genotype, y = bends)) +
+  geom_boxplot() +
+  ggbeeswarm::geom_quasirandom(aes(group = genotype),
+                               width = .1,
+                               alpha = 0.3,
+                               dodge.width = .75) +
+  stat_summary(aes(color = genotype),
+               geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = 1.6)) +
+  scale_color_brewer(palette = "Accent") +
+  scale_fill_brewer(palette = "Accent") +
+   labs(title = "Body bends in anterior       
+touch response",
+ y = "number of body bends per reversal", x = "Plate additive")+ 
+  facet_grid(.~ date))
+
+(TAtailtouchPlot <- 
+  AntTouch %>%
+    ungroup() %>%
+    mutate(additive = case_when(
+      is.na(additive) ~ 'none',
+      TRUE ~ additive)) %>%
+  filter(is.na(note),  food == "OP50", additive != "H2O") %>%
+  ggplot(aes(x = genotype, fill = tail_touch)) +
+    # if you don't choose position = "fill", it will give you counts, not proportion
+    geom_bar(position = "fill") +
+  labs(title = "Tail touch probability in cest-1.2",
+       y = "proportion of tail touch events") +
+  facet_grid(.~additive) +
+    scale_fill_brewer(palette = "Pastel2", direction = -1))
+
+(TAbodybendPlot | TAtailtouchPlot)
+```
+```{r tnaA experiment}
+(tnaAbodybendPlot <- AntTouch %>%
+  #filter(NumBends < 10) %>%
+  filter(is.na(note), time_off_food != 30, food != "OP50") %>%
+  ggplot(aes(x = food, fill = genotype, y = bends)) +
+  geom_boxplot() +
+  ggbeeswarm::geom_quasirandom(aes(group = genotype),
+                               width = .1,
+                               alpha = 0.3,
+                               dodge.width = .75) +
+  stat_summary(aes(color = genotype),
+               geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = 1.6)) +
+  scale_color_brewer(palette = "Accent") +
+  scale_fill_brewer(palette = "Accent") +
+   labs(title = "Body bends in anterior touch response",
+ y = "number of body bends per reversal")) +
+  facet_grid(.~ date)
+
+(tnaAtailtouchPlot <- 
+  AntTouch %>%
+    ungroup() %>%
+  filter(is.na(note), food != "OP50") %>%
+  ggplot(aes(x = genotype, fill = tail_touch)) +
+    # if you don't choose position = "fill", it will give you counts, not proportion
+    geom_bar(position = "fill") +
+  labs(title = "Tail touch probability in cest-1.2",
+       y = "proportion of tail touch events") +
+  facet_grid(date ~food) +
+    scale_fill_brewer(palette = "Pastel2", direction = -1))
+
+(tnaAbodybendPlot | tnaAtailtouchPlot)
+
+(distribution <- ggplot(AntTouch, aes(x=bends)) +
+    geom_histogram(binwidth=.5, colour="black", fill="white")+
+    facet_grid(genotype ~ food))
+  
+
+```
+```{r combined plot}
+
+(TAbodybendPlot | TAtailtouchPlot)/ (tnaAbodybendPlot  | tnaAtailtouchPlot)
 ```
 
