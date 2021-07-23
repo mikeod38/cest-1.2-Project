@@ -55,6 +55,20 @@ AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv')
 #  geom_smooth(method = "lm")
 
 ```
+```{r histogram grouped into long and short runs}
+AntTouch$bends_logical <- AntTouch$bends <= 4
+
+(bendspercentplot <- AntTouch %>%  
+  filter(is.na(note), time_off_food != 30, is.na(additive), genotype != "daf-22",
+         food == "OP50") %>%
+ggplot(aes(x=as.factor(genotype), fill=as.factor(bends_logical)))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(..count../tapply(..count.., ..x.. ,sum)[..x..]) ),
+            stat="count", position=position_dodge(0.9), vjust=-0.5)+
+  ylab('Percent of Backward Runs') +
+  scale_y_continuous(labels = scales::percent))
+
+```
 
 ```{r means by group}
   
