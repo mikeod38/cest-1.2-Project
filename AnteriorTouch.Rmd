@@ -124,7 +124,8 @@ tailtouchPlot
 ```{r plot both, fig.height=8, fig.width = 10}
 bodybendPlot2 <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  filter(is.na(note), time_off_food != 30, is.na(additive), food == "OP50") %>%
+  filter(is.na(note), time_off_food != 30, is.na(additive), food == "OP50", 
+         genotype != "daf-22", date != "7/8/2021", date != "7/14/2021") %>%
   ggplot(aes(x = 1, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
@@ -143,6 +144,8 @@ bodybendPlot2 <- AntTouch %>%
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
+
+bodybendPlot2
 
 tailtouchPlot3 <- 
   AntTouch %>%
