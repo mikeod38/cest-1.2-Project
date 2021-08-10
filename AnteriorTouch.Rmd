@@ -57,6 +57,7 @@ AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv') %>%
 
 ```
 ```{r histogram grouped into long and short runs}
+#work in progress, not sure if this is correct yet
 AntTouch$bends_logical <- AntTouch$bends <= 4
 
 (bendspercentplot <- AntTouch %>%  
@@ -138,7 +139,8 @@ bodybendPlot2 <- AntTouch %>%
          time_off_food != 30, 
          is.na(additive), 
          food == "OP50",
-         !date %in% c("7/8/2021", "7/14/2021")) %>%
+         genotype != "daf-22",
+         !date %in% c("7/7/2021","7/8/2021","7/14/2021")) %>%
   ggplot(aes(x = 1, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
@@ -290,7 +292,7 @@ touch response",
 ```{r tnaA experiment}
 (tnaAbodybendPlot <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  filter(is.na(note), time_off_food != 30, food != "OP50") %>%
+  filter(is.na(note), time_off_food != 30, food != "OP50", date == "8/10/2021") %>%
   ggplot(aes(x = food, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
