@@ -221,7 +221,7 @@ touch response",
 ```{r tnaA experiment}
 (tnaAbodybendPlot <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  filter(is.na(note), time_off_food != 30, food != "OP50") %>%
+  filter(is.na(note), time_off_food != 30, food != "OP50", date == "8/10/2021") %>%
   ggplot(aes(x = food, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
