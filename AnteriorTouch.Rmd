@@ -1,4 +1,4 @@
-pa---
+---
 title: "cest1.2_AnteriorTouch"
 author: "Julia_Mike"
 date: "6/15/2021"
@@ -19,7 +19,8 @@ theme_set(theme_classic())
 ```
 
 ```{r data load, message=FALSE}
-AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv')
+AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv') %>%
+  mutate(plate = as.factor(plate))
 ```
 
 ```{r}
@@ -91,8 +92,16 @@ AntTouch %>%
 AntTouch %>%
   filter(time_off_food != 30, is.na(note), is.na(additive), food == "OP50") %>%
   ggplot(aes(x = bends)) +
-  geom_freqpoly(aes(color = genotype), stat = "bin", bins = 6)
-  #geom_density(aes(fill = genotype), alpha = 0.2)
+  geom_freqpoly(aes(color = genotype, y = stat(count) / sum(count)), stat = "bin", bins = 6)
+
+
+# or density plot:
+AntTouch %>%
+  filter(time_off_food != 30, is.na(note)) %>%
+  ggplot(aes(x = bends, fill = genotype, colour = genotype)) +
+  geom_density(aes(color = genotype), alpha = 0.1, adjust = 2) +
+  xlim(0,10)
+
 ```
 
 ```{r tail touch}
@@ -122,10 +131,16 @@ tailtouchPlot
 ```
 
 ```{r plot both, fig.height=8, fig.width = 10}
+#censor the days before the worms were bleached:
+
 bodybendPlot2 <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  filter(is.na(note), time_off_food != 30, is.na(additive), food == "OP50", 
-         genotype != "daf-22", date != "7/8/2021", date != "7/14/2021") %>%
+  filter(is.na(note), 
+         time_off_food != 30, 
+         is.na(additive), 
+         food == "OP50",
+         genotype != "daf-22",
+         !date %in% c("7/7/2021","7/8/2021","7/14/2021")) %>%
   ggplot(aes(x = 1, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
@@ -135,7 +150,8 @@ bodybendPlot2 <- AntTouch %>%
   stat_summary(aes(color = genotype),
                geom = "errorbar", 
                fun.data = "mean_se", 
-               width = 0.1, 
+               width = 0.1,
+               size =10,
                position = position_dodge(width = 1.6)) +
   scale_color_brewer(palette = "Accent") +
   scale_fill_brewer(palette = "Accent") +
@@ -145,12 +161,43 @@ bodybendPlot2 <- AntTouch %>%
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
-bodybendPlot2
+bodybendPlot3 <- AntTouch %>%
+  #filter(NumBends < 10) %>%
+  filter(is.na(note), 
+         time_off_food != 30, 
+         is.na(additive), 
+         food == "OP50",
+         !date %in% c("7/8/2021", "7/14/2021")) %>%
+  ggplot(aes(x = 1, fill = genotype, y = bends)) +
+  #geom_boxplot() +
+  stat_summary(aes(fill= genotype),
+               geom = "bar", 
+               fun = "mean", 
+               width = 0.3, 
+               position = position_dodge(width = .4)) +
+  ggbeeswarm::geom_quasirandom(aes(group = genotype),
+                               pch=1,
+                               width = .075,
+                               alpha = 0.6,
+                               dodge.width = .4) +
+  stat_summary(geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = .4)) +
+  scale_color_brewer(palette = "Accent") +
+  scale_fill_brewer(palette = "Accent") +
+   labs(title = "Body bends in anterior touch response",
+ y = "number of body bends per reversal") +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
 
-tailtouchPlot3 <- 
-  AntTouch %>%
+tailtouchPlot3 <- AntTouch %>%
     ungroup() %>%
-  filter(is.na(note), is.na(additive),  food == "OP50") %>%
+  filter(is.na(note), 
+         is.na(additive),
+         food == "OP50",
+         !date %in% c("7/8/2021", "7/14/2021")) %>%
   # next line is to fix the typo
   mutate(tail_touch = case_when( 
     tail_touch == "Y" ~ "Y",
@@ -163,7 +210,7 @@ tailtouchPlot3 <-
        y = "proportion of tail touch events") +
     scale_fill_brewer(palette = "Pastel2", direction = -1)
 
-(bodybendPlot / tailtouchPlot2) | (bodybendPlot2 / tailtouchPlot3)
+(bodybendPlot / tailtouchPlot2) | (bodybendPlot3 / tailtouchPlot3)
 
 
 ```
@@ -173,10 +220,34 @@ tailtouchPlot3 <-
 bayes_mod <- AntTouch %>%
   filter(is.na(note), time_off_food != 30) %>%
   rstanarm::stan_glmer(
-  formula = bends ~ genotype + (1|date),
+  formula = bends ~ genotype + (1|date) + (1|plate),
   family = poisson,
   adapt_delta = 0.99
 )
+
+glmm_mod <- AntTouch %>%
+  filter(is.na(note), time_off_food != 30) %>%
+  lme4::glmer(formula = bends ~ genotype + (1|plate),
+  family = poisson
+)
+# this leads to singular fit so a Bayes approach is better. 
+
+
+#non hierarchical glm
+glm_mod <- AntTouch %>%
+  filter(is.na(note), time_off_food != 30) %>%
+  glm(formula = bends ~ genotype,
+  family = poisson
+)
+
+# or to model as log-transformed continuous variable (not ideal)
+bayes_linmod <- AntTouch %>%
+  filter(is.na(note), time_off_food != 30) %>%
+  rstanarm::stan_lmer(
+  formula = log(bends) ~ genotype + (1|date) + (1|plate),
+  adapt_delta = 0.99
+)
+
 ```
 ```{r TA experiment}
 (TAbodybendPlot <- AntTouch %>%
