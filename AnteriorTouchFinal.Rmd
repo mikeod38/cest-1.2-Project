@@ -21,7 +21,7 @@ AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv') %>%
 dates_contaminated <- c("7/7/2021","7/8/2021","7/14/2021","7/15/2021")
 ```
 
-```{r, general bodybend and tailtouch plots, fig.height=8, fig.width = 12}
+```{r general bodybend and tailtouch plots, fig.height=8, fig.width = 13}
 
 #bodybend boxplot, by date
 bodybendPlot <- AntTouch %>%
@@ -45,9 +45,7 @@ bodybendPlot <- AntTouch %>%
   scale_color_brewer(palette = "Accent") +
   scale_fill_brewer(palette = "Accent") +
    labs(title = "Body bends in anterior touch response",
- y = "number of body bends per reversal") +
-   stat_summary(aes(shape = genotype), fun = mean, geom = "point",
-                color = "red", size = 2)
+ y = "number of body bends per reversal", x = "Date") 
 
 #tail touch bar plot, by date
 tailtouchPlot <- 
@@ -63,7 +61,7 @@ tailtouchPlot <-
   labs(title = "Tail touch probability in cest-1.2",
        y = "proportion of tail touch events") +
   facet_grid(.~date) +
-    scale_fill_brewer(palette = "Pastel2", direction = -1)
+    scale_fill_brewer(palette = "Paired")
 
 #bodybend bar plot, combined
 bodybendPlot2 <- AntTouch %>%
@@ -97,20 +95,108 @@ bodybendPlot2 <- AntTouch %>%
 
 #tail touch bar plot, combined
 tailtouchPlot2 <- AntTouch %>%
-    ungroup() %>%
+  ungroup() %>%
   filter(is.na(note), 
          is.na(additive),
          food == "OP50",
          !date %in% dates_contaminated) %>%
   ggplot(aes(x = genotype, fill = tail_touch)) +
-    geom_bar(position = "fill") +
+  geom_bar(position = "fill",
+           width = 0.75) +
   labs(title = "Tail touch probability in cest-1.2",
        y = "proportion of tail touch events") +
-    scale_fill_brewer(palette = "Pastel2", direction = -1)
+  scale_fill_brewer(palette = "Paired")
 
 (bodybendPlot / tailtouchPlot) | (bodybendPlot2 / tailtouchPlot2)
 ```
-```{r}
+```{r basic statistics}
+
+#body bends comparison of means
+AntTouchSimplified <- AntTouch %>% 
+  filter(is.na(note), 
+         time_off_food != 30, 
+         is.na(additive), 
+         food == "OP50",
+         !date %in% dates_contaminated) %>%
+  select(genotype, bends)
+
+t.test(bends ~ genotype, data = AntTouchSimplified)
+
+```
+
+```{r tnaA experiment, fig.height=5, fig.width = 15}
+
+#tnaA bodybends plot by date
+tnaAbodybendPlot <- AntTouch %>%
+  filter(is.na(note),
+         time_off_food != 30,
+         !food %in% c("OP50", "JUb39", "tdcKO"),
+         !date %in% dates_contaminated) %>%
+  ggplot(aes(x = food, fill = genotype, y = bends)) +
+  geom_boxplot() +
+  ggbeeswarm::geom_quasirandom(aes(group = genotype),
+                               width = .1,
+                               alpha = 0.3,
+                               dodge.width = .75) +
+  stat_summary(aes(color = genotype),
+               geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = 1.6)) +
+  scale_color_brewer(palette = "Accent") +
+  scale_fill_brewer(palette = "Accent") +
+   labs(title = "Body bends in anterior touch response",
+ y = "number of body bends per reversal") +
+  facet_grid(.~ date)
+
+
+#bodybend bar plot, combined
+tnaAbodybendPlot2 <- AntTouch %>%
+ filter(is.na(note), 
+         is.na(additive),  
+         !food %in% c("OP50", "JUb39", "tdcKO"), 
+         genotype != "daf-22",
+         !date %in% dates_contaminated) %>%
+  ggplot(aes(x = genotype, fill = food, y = bends)) +
+  stat_summary(aes(fill= food),
+               geom = "bar", 
+               fun = "mean", 
+               width = 0.5, 
+               position = position_dodge(width = .55)) +
+  stat_summary(geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = .55)) +
+  scale_color_brewer(palette = "Set2") +
+  scale_fill_brewer(palette = "Set2") +
+   labs(title = "Body bends in anterior touch response",
+ y = "number of body bends per reversal")
+
+
+(tnaAbodybendPlot | tnaAbodybendPlot2)
+
+```
+```{r basic stats for tnaA experiment}
+
+AntTouch_BW <- AntTouch %>% 
+  filter(is.na(note), 
+         time_off_food != 30, 
+         is.na(additive), 
+         food == "BW25113",
+         !date %in% dates_contaminated) %>%
+  select(genotype, bends)
+
+t.test(bends ~ genotype, data = AntTouchBW)
+
+AntTouch_tnaA <- AntTouch %>% 
+  filter(is.na(note), 
+         time_off_food != 30, 
+         is.na(additive), 
+         food == "tnaA",
+         !date %in% dates_contaminated) %>%
+  select(genotype, bends)
+
+t.test(bends ~ genotype, data = AntTouch_tnaA)
 
 ```
 
