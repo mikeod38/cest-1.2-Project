@@ -1,0 +1,116 @@
+---
+title: "cest-1.2_AnteriorTouch_Final"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(patchwork)
+library(ggbeeswarm)
+library(kableExtra)
+library(magrittr)
+theme_set(theme_classic())
+```
+
+
+```{r data load, message=FALSE}
+AntTouch <- read_csv('cest1.2_anterior_touch_merged.csv') %>%
+  mutate(plate = as.factor(plate))
+
+dates_contaminated <- c("7/7/2021","7/8/2021","7/14/2021","7/15/2021")
+```
+
+```{r, general bodybend and tailtouch plots, fig.height=8, fig.width = 12}
+
+#bodybend boxplot, by date
+bodybendPlot <- AntTouch %>%
+  filter(is.na(note), 
+         time_off_food != 30, 
+         is.na(additive), 
+         genotype != "daf-22",
+         food == "OP50",  
+         !date %in% dates_contaminated) %>%
+  ggplot(aes(x = date, fill = genotype, y = bends)) +
+  geom_boxplot() +
+  ggbeeswarm::geom_quasirandom(aes(group = genotype),
+                               width = .1,
+                               alpha = 0.3,
+                               dodge.width = .75) +
+  stat_summary(aes(color = genotype),
+               geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = 1.6)) +
+  scale_color_brewer(palette = "Accent") +
+  scale_fill_brewer(palette = "Accent") +
+   labs(title = "Body bends in anterior touch response",
+ y = "number of body bends per reversal") +
+   stat_summary(aes(shape = genotype), fun = mean, geom = "point",
+                color = "red", size = 2)
+
+#tail touch bar plot, by date
+tailtouchPlot <- 
+  AntTouch %>%
+  ungroup() %>%
+  filter(is.na(note), 
+         is.na(additive),  
+         food == "OP50", 
+         genotype != "daf-22",
+         !date %in% dates_contaminated) %>%
+  ggplot(aes(x = genotype, fill = tail_touch)) +
+  geom_bar(position = "fill") +
+  labs(title = "Tail touch probability in cest-1.2",
+       y = "proportion of tail touch events") +
+  facet_grid(.~date) +
+    scale_fill_brewer(palette = "Pastel2", direction = -1)
+
+#bodybend bar plot, combined
+bodybendPlot2 <- AntTouch %>%
+  filter(is.na(note), 
+         time_off_food != 30, 
+         is.na(additive), 
+         food == "OP50",
+         !date %in% dates_contaminated) %>%
+  ggplot(aes(x = 1, fill = genotype, y = bends)) +
+  stat_summary(aes(fill= genotype),
+               geom = "bar", 
+               fun = "mean", 
+               width = 0.3, 
+               position = position_dodge(width = .4)) +
+  ggbeeswarm::geom_quasirandom(aes(group = genotype),
+                               pch=1,
+                               width = .075,
+                               alpha = 0.6,
+                               dodge.width = .4) +
+  stat_summary(geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = .4)) +
+  scale_color_brewer(palette = "Accent") +
+  scale_fill_brewer(palette = "Accent") +
+   labs(title = "Body bends in anterior touch response",
+ y = "number of body bends per reversal") +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+#tail touch bar plot, combined
+tailtouchPlot2 <- AntTouch %>%
+    ungroup() %>%
+  filter(is.na(note), 
+         is.na(additive),
+         food == "OP50",
+         !date %in% dates_contaminated) %>%
+  ggplot(aes(x = genotype, fill = tail_touch)) +
+    geom_bar(position = "fill") +
+  labs(title = "Tail touch probability in cest-1.2",
+       y = "proportion of tail touch events") +
+    scale_fill_brewer(palette = "Pastel2", direction = -1)
+
+(bodybendPlot / tailtouchPlot) | (bodybendPlot2 / tailtouchPlot2)
+```
+```{r}
+
+```
+
