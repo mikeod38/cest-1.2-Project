@@ -291,7 +291,7 @@ touch response",
 ```{r tnaA experiment}
 (tnaAbodybendPlot <- AntTouch %>%
   #filter(NumBends < 10) %>%
-  filter(is.na(note), time_off_food != 30, food != "OP50", date == "8/10/2021") %>%
+  filter(is.na(note), time_off_food != 30, food != "OP50") %>%
   ggplot(aes(x = food, fill = genotype, y = bends)) +
   geom_boxplot() +
   ggbeeswarm::geom_quasirandom(aes(group = genotype),
@@ -333,4 +333,39 @@ touch response",
 
 (TAbodybendPlot | TAtailtouchPlot)/ (tnaAbodybendPlot  | tnaAtailtouchPlot)
 ```
+
+```{r, JUb experiment}
+(JUbbodybendPlot <- AntTouch %>%
+  filter(is.na(note), time_off_food != 30, date == "2021-08-11") %>%
+  ggplot(aes(x = food, fill = genotype, y = bends)) +
+  geom_boxplot() +
+  ggbeeswarm::geom_quasirandom(aes(group = genotype),
+                               width = .1,
+                               alpha = 0.3,
+                               dodge.width = .75) +
+  stat_summary(aes(color = genotype),
+               geom = "errorbar", 
+               fun.data = "mean_se", 
+               width = 0.1, 
+               position = position_dodge(width = 1.6)) +
+  scale_color_brewer(palette = "Accent") +
+  scale_fill_brewer(palette = "Accent") +
+   labs(title = "Body bends in anterior touch response",
+ y = "number of body bends per reversal"))
+
+(JUbtailtouchPlot <- 
+  AntTouch %>%
+    ungroup() %>%
+  filter(is.na(note), date == "2021-08-11") %>%
+  ggplot(aes(x = genotype, fill = tail_touch)) +
+    geom_bar(position = "fill") +
+  labs(title = "Tail touch probability in cest-1.2",
+       y = "proportion of tail touch events") +
+  facet_grid(date ~food) +
+    scale_fill_brewer(palette = "Pastel2", direction = -1))
+
+(JUbbodybendPlot | JUbtailtouchPlot)
+
+```
+
 
