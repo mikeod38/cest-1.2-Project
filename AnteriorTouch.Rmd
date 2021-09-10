@@ -73,16 +73,15 @@ ggplot(aes(x=as.factor(genotype), fill=as.factor(bends_logical)))+
 ```
 
 ```{r means by group}
-  
 
 # get group means:
 
-AntTouch %>%
-  filter(time_off_food != 30, is.na(note), is.na(additive), food == "OP50") %>%
-  group_by(genotype, observer) %>%
-  summarize(mean_bends = mean(bends)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+# AntTouch %>%
+#   filter(time_off_food != 30, is.na(note), is.na(additive), food == "OP50") %>%
+#   group_by(genotype, observer) %>%
+#   summarize(mean_bends = mean(bends)) %>%
+#   kable() %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 
 ```
 
